@@ -9,10 +9,9 @@ export async function POST(request: NextRequest) {
   try {
     const { message, image, history } = await request.json();
 
-    // For text-only requests, use gemini-pro
-    // For text + image requests, use gemini-pro-vision
+    // Use the latest Gemini models
     const model = genAI.getGenerativeModel({ 
-      model: image ? "gemini-pro-vision" : "gemini-pro" 
+      model: image ? "gemini-1.5-flash" : "gemini-1.5-flash" 
     });
 
     // Prepare the prompt with relationship context
