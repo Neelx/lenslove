@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useMotionValue, useTransform, useSpring, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, Heart, MessageCircle, Users, Sparkles, Shield, ChevronDown, Menu, X, Check, Star, ArrowRight, Brain, Zap, Lock, Globe, BarChart3, TrendingUp, Award, Gift, Headphones, BookOpen, Mail, Phone, MapPin, Clock, ChevronRight, Hash, ThumbsUp, MessageSquare, Share2 } from 'lucide-react';
+import ChatInterface from './ChatInterface';
 
 // Add CSS styles directly to the component
 const styles = `
@@ -503,7 +504,8 @@ const HeroSection = () => {
             onClick={() => setIsChatOpen(true)}
             className="px-8 py-4 text-base font-semibold rounded-full bg-[#e68ab8] hover:bg-[#d67ba8] text-white shadow-lg hover:shadow-xl hover:-translate-y-[2px] transition-all duration-300 inline-flex items-center gap-2"
           >
-            Try
+            Try AI Love Advisor
+            <Heart className="w-5 h-5" />
           </button>
 
           <button className="px-8 py-4 text-base font-semibold rounded-full bg-white/60 hover:bg-white/80 text-gray-900 border border-white/30 hover:border-white/50 transition-all duration-300">
@@ -512,20 +514,8 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Chat Interface Modal */}
-      {isChatOpen && (
-        <div className="fixed inset-0 bg-black/30 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-bold text-gray-900">Love AI Chat</h3>
-              <button onClick={() => setIsChatOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg">
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-            <p className="text-gray-600">Chat interface would appear here</p>
-          </div>
-        </div>
-      )}
+      {/* Chat Interface Modal - Replace the existing basic modal */}
+      <ChatInterface isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
     </section>
   );
 };
